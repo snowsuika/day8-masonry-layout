@@ -4,7 +4,7 @@ function renderImages() {
     let items = '';
     for (let i = 1; i <= 10; i++) {
         items += `<div class="item">
-    <img src="../img/${i}.jpeg"/></div>`;
+    <img src="./img/${i}.jpeg"/></div>`;
     }
     grid.innerHTML = items;
     return items;

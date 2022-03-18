@@ -17,12 +17,12 @@ $grid.imagesLoaded(function (ImagesLoaded) {
     ImagesLoaded.images.forEach((item) => {
         item.img.style.display = null;
         item.img.style.animationName = 'bounceIn';
-        item.img.style.animationDuration = '450ms';
+        item.img.style.animationDuration = '500ms';
         item.img.style.animationTimingFunction = 'linear';
         item.img.style.animationFillMode = 'forwards';
         item.img.style.animationDelay = time + 's';
 
-        time += 0.25;
+        time += 0.3;
     });
 
     $grid.masonry({

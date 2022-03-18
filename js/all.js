@@ -1,34 +1,33 @@
-const grid = document.querySelector('.grid');
-
 function renderImages() {
     let items = '';
     for (let i = 1; i <= 10; i++) {
         items += `<div class="item">
-    <img src="./img/${i}.jpeg"/></div>`;
+            <img class="img" src="./img/${i}.jpeg" style="display:none"/>
+          </div>`;
     }
-    grid.innerHTML = items;
-    return items;
+    document.querySelector('.grid').innerHTML = items;
 }
-
 renderImages();
 
-var msnry = new Masonry(grid, {
-    itemSelector: '.item',
-    columnWidth: 20,
-    horizontalOrder: true,
-    gutter: 10,
-    percentPosition: true,
-});
+// init Masonry
+var $grid = $('.grid');
+// layout Masonry after each image loads
+$grid.imagesLoaded(function (ImagesLoaded) {
+    let time = 0;
+    ImagesLoaded.images.forEach((item) => {
+        item.img.style.display = null;
+        item.img.style.animationName = 'bounceIn';
+        item.img.style.animationDuration = '450ms';
+        item.img.style.animationTimingFunction = 'linear';
+        item.img.style.animationFillMode = 'forwards';
+        item.img.style.animationDelay = time + 's';
 
-let time = 0;
-imagesLoaded(grid).on('progress', function (ImagesLoaded, LoadingImage) {
-    LoadingImage.img.style.animationName = 'bounceIn';
-    LoadingImage.img.style.animationDuration = '450ms';
-    LoadingImage.img.style.animationTimingFunction = 'linear';
-    LoadingImage.img.style.animationFillMode = 'forwards';
-    LoadingImage.img.style.animationDelay = time + 's';
+        time += 0.25;
+    });
 
-    // layout Masonry after each image loads
-    msnry.layout();
-    time += 0.15;
+    $grid.masonry({
+        itemSelector: '.item',
+        horizontalOrder: true,
+        percentPosition: true,
+    });
 });

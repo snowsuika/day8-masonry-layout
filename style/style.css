@@ -55,21 +55,21 @@ ul li:hover {
 
 
 .container {
-    flex: 1 1 500px;
+    flex-grow: 1;
     overflow-y: overlay;
     padding: 50px 60px;
 }
 
 .item {
-    width: 31.5%;
+    width: 33.333%;
     float: left;
-    margin-bottom: 10px;
+    padding: 0.25rem;
 }
 
 .item img {
     display: block;
     max-width: 100%;
-    border-radius: 10px;
+    border-radius: 0.5rem;
 }
 
 @keyframes bounceIn {

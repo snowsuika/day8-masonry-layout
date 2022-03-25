@@ -2,7 +2,7 @@ function renderImages() {
     let items = '';
     for (let i = 1; i <= 10; i++) {
         items += `<div class="item">
-            <img class="img" src="./img/${i}.jpeg" style="display:none"/>
+            <img class="img" src="./img/${i}.jpeg" style="opacity:0"/>
           </div>`;
     }
     document.querySelector('.grid').innerHTML = items;
@@ -15,7 +15,6 @@ var $grid = $('.grid');
 $grid.imagesLoaded(function (ImagesLoaded) {
     let time = 0;
     ImagesLoaded.images.forEach((item) => {
-        item.img.style.display = null;
         item.img.style.animationName = 'bounceIn';
         item.img.style.animationDuration = '500ms';
         item.img.style.animationTimingFunction = 'linear';
